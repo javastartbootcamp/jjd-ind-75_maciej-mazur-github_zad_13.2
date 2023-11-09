@@ -14,13 +14,18 @@ public class Main {
 
     public void run(Scanner scanner) {
         // napisz swój program tutaj. Do wczytywania danych użyj przekazanego w parametrze scannera
-        DataReader reader = new DataReader(scanner);
+        DataReader reader = new DataReader();
 
         printLine("Wprowadzaj kolejne liczby nieujemne. Wpisanie liczby ujemnej wywoła serię wydruków statystyk.");
         NumbersData numbersData = reader.readNumbers(scanner);
-        printReversedList(numbersData.list());
-        printSumEquation(numbersData.list());
-        printLine("Najmniejsza liczba w liście to " + numbersData.smallestNumber());
-        printLine("Największa liczba w liście to " + numbersData.greatestNumber());
+
+        if (!numbersData.list().isEmpty()) {
+            printReversedList(numbersData.list());
+            printSumEquation(numbersData.list());
+            printLine("Najmniejsza liczba w liście to " + numbersData.smallestNumber());
+            printLine("Największa liczba w liście to " + numbersData.greatestNumber());
+        } else {
+            System.out.println("Lista zgromadzonych liczb nieujemnych jest pusta.");
+        }
     }
 }
